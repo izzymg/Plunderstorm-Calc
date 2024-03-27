@@ -24,8 +24,12 @@ export default function CalculatorView() {
 
   const getInitialPlunder = () =>
     localStorage.getItem("plunder") || 0
+  
+  const getInitialDeadline = () =>
+    Math.round(Math.abs((new Date(Date.now()) - new Date(2024, 4, 1)) / (24 * 60 * 60 * 1000)));
 
   let [plunder, setPlunder] = useState(getInitialPlunder)
+  let [deadline, setDeadline] = useState(getInitialDeadline)
 
   const updatePlunder = (v, x) => {
     localStorage.setItem("plunder", v * x)
@@ -39,15 +43,18 @@ export default function CalculatorView() {
     (RENOWN_PLUNDER*MAX_RENOWN)-plunder
   
   const neededPerDay = () =>
-    Math.ceil(needed() / daysLeft)
+    Math.ceil(needed() / deadline)
   
   const neededPerDayMillion = () =>
-    Math.ceil((1000000-plunder) / daysLeft)
+    Math.ceil((1000000-plunder) / deadline)
 
-  const daysLeft = Math.round(Math.abs((new Date(Date.now()) - new Date(2024, 4, 1)) / (24 * 60 * 60 * 1000)));
   return (
     <>
-      <h2>Ye got <span className='mono'>~{daysLeft}</span> days o' plunderin left</h2>
+      <div className={styles.daysLeft}>
+        <span>Ye got</span>
+        <input type='text' onChange={v => setDeadline(parseInt(v.target.value) || getInitialDeadline())} className='mono' value={deadline}/>
+        <span>days o' plunderin left</span>
+      </div>
     
       <RenownInput initialRenown={renown()} onUpdate={v => updatePlunder(v-1, RENOWN_PLUNDER)}/>
       <PlunderInput initialPlunder={plunder} onUpdate={v => updatePlunder(v, 1)}/>
