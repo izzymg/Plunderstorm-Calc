@@ -32,7 +32,7 @@ export default function CalculatorView() {
     Math.min(1 + ((p - FIRST_RENOWN) / RENOWN_PLUNDER) + (Math.min(1, p / FIRST_RENOWN)), 40)
 
   const calculatePlunder = r =>
-    r > 2 ? (((r-2) * RENOWN_PLUNDER) + FIRST_RENOWN) : FIRST_RENOWN + (RENOWN_PLUNDER * r-1)
+    r > 2 ? (((r-2) * RENOWN_PLUNDER) + FIRST_RENOWN) : Math.max(0, FIRST_RENOWN + (RENOWN_PLUNDER * (r-1)))
 
   let [plunder, setPlunder] = useState(getInitialPlunder)
   let [renown, setRenown] = useState(() => calculateRenown(plunder))
