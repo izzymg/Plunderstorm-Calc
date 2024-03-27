@@ -7,3 +7,9 @@
     gap: 1em;
     font-size: 1.2em;
 }
+
+.mili {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}

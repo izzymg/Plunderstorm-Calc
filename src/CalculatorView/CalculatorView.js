@@ -16,6 +16,8 @@ export default function CalculatorView() {
   const neededPerDay = () =>
     Math.ceil(needed() / daysLeft)
   
+  const neededPerDayMillion = () =>
+    Math.ceil((1000000-plunder) / daysLeft)
 
   const daysLeft = Math.round(Math.abs((new Date(Date.now()) - new Date(2024, 4, 1)) / (24 * 60 * 60 * 1000)));
   return (
@@ -27,8 +29,12 @@ export default function CalculatorView() {
 
 
       <div className={styles.results}>
+        <span>⚙️ You should earn <span className="mono">~{neededPerDay()}</span> Plunder per-day to cap</span>
         <span>💰 You need <span className="mono">{needed()}</span> Plunder </span>
-        <span>⚙️ You should earn <span className="mono">~{neededPerDay()}</span> Plunder per-day.</span>
+        <div className={styles.mili}>
+          <span>💀💀 GOIN FOR A MILLION? ⚔️⚔️</span>
+          <span>You should earn <span className='mono'>{neededPerDayMillion()}</span> Plunder per-day</span>
+        </div>
       </div>
     </>
   )
