@@ -1,8 +1,13 @@
+.resultsWrap {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
 .results {
     margin: 1.5em 0;
     display: flex;
     flex-flow: column;
-    justify-content: start;
     text-align: left;
     gap: 1em;
     font-size: 1.2em;
@@ -12,4 +17,10 @@
     display: flex;
     flex-flow: column;
     justify-content: center;
+}
+
+@media screen and (max-width: 500px) {
+    .resultsWrap {
+        justify-content: flex-start;
+    }
 }

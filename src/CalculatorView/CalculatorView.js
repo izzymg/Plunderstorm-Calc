@@ -9,8 +9,8 @@ function Results({ needed, neededPerDay }) {
   if(needed > 0) {
     return(
       <>
-        <span>⚙️ You should earn <span className="mono">~{neededPerDay}</span> Plunder per-day to cap</span>
-        <span>💰 You need <span className="mono">{needed}</span> Plunder </span>
+        <span>⚙️ Earn <span className="mono">~{neededPerDay}</span> per-day to cap</span>
+        <span>💰 You need <span className="mono">{needed}</span> Plunder total </span>
       </>
     )
   } else {
@@ -50,11 +50,13 @@ export default function CalculatorView() {
       <PlunderInput initialPlunder={plunder} onUpdate={v => updatePlunder(v, 1)}/>
 
 
-      <div className={styles.results}>
-        <Results needed={needed()} neededPerDay={neededPerDay()}></Results>
-        <div className={styles.mili}>
-          <span>💀💀 GOIN FOR A MILLION? ⚔️⚔️</span>
-          <span>You should earn <span className='mono'>{neededPerDayMillion()}</span> Plunder per-day</span>
+      <div className="resultsWrap">
+        <div className={styles.results}>
+          <Results needed={needed()} neededPerDay={neededPerDay()}></Results>
+          <div className={styles.mili}>
+            <span>💀💀 GOIN FOR A MILLION? ⚔️⚔️</span>
+            <span>Earn <span className='mono'>{neededPerDayMillion()}</span> per-day</span>
+          </div>
         </div>
       </div>
     </>
