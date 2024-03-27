@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url("./assets/bg.jpg"),
     linear-gradient(to right, rgba(5, 1, 6, 1) 550px, rgba(0, 0, 0, 0.6), rgba(30, 20, 0, 01) 2400px);
   background-blend-mode: darken;
