@@ -53,7 +53,7 @@ export default function CalculatorView() {
 
 
   const needed = () =>
-    (RENOWN_PLUNDER*MAX_RENOWN)-plunder
+    (2500*39)-1000-plunder
   
   const neededPerDay = () =>
     Math.ceil(needed() / deadline)
