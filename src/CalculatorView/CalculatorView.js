@@ -32,6 +32,9 @@ export default function CalculatorView() {
     setPlunder(v * x)
   }
 
+  const renown = () =>
+    Math.min(1 + (plunder/2500), 40)
+
   const needed = () =>
     (RENOWN_PLUNDER*MAX_RENOWN)-plunder
   
@@ -46,7 +49,7 @@ export default function CalculatorView() {
     <>
       <h2>Ye got <span className='mono'>~{daysLeft}</span> days o' plunderin left</h2>
     
-      <RenownInput initialRenown={Math.min(plunder / RENOWN_PLUNDER, 40)} onUpdate={v => updatePlunder(v, RENOWN_PLUNDER)}/>
+      <RenownInput initialRenown={renown()} onUpdate={v => updatePlunder(v-1, RENOWN_PLUNDER)}/>
       <PlunderInput initialPlunder={plunder} onUpdate={v => updatePlunder(v, 1)}/>
 
 
