@@ -7,7 +7,7 @@ export default function RenownInput({ initialRenown, onUpdate }) {
     return(
         <div className="inputWrap">
             <label htmlFor='plunder'>YE RENOWN</label>
-            <input id='plunder' type='text' value={initialRenown} pattern="[0-9]*" inputmode="numeric" onChange={onRenownChange} placeholder='0'></input>
+            <input id='plunder' type='text' value={initialRenown} pattern="[0-9]*" inputMode="numeric" onChange={onRenownChange} placeholder='0'></input>
         </div>
     )
 }
