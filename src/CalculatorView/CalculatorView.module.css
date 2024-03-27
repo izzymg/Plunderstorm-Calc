@@ -1,0 +1,9 @@
+.results {
+    margin: 1.5em 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    text-align: left;
+    gap: 1em;
+    font-size: 1.2em;
+}

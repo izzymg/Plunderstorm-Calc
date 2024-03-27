@@ -1,0 +1,81 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  font-size: calc(10px + 1vmin);
+  color: white;
+
+  padding-top: 5%;
+  text-shadow:  1px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  align-items: start;
+  width: max(350px, 30%);
+}
+
+@media screen and (max-width: 500px) {
+    .content {
+      align-items: center;
+      justify-content: center;
+    }
+}
+
+.mono {
+  background-color: hsl(0, 0%, 5%);
+  padding: 5px;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+.bigtext {
+  font-size: 1.5em;
+  text-transform: uppercase;
+  border-bottom: 1px dashed rgb(241, 215, 64);
+  font-weight: bolder;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+}
+
+a, a:visited {
+  color: #06ff50;
+}
+
+label {
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+.small {
+  font-size: xx-small;
+}
+
+input {
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgb(253, 245, 232);
+  font-family: inherit;
+  padding: 1em;
+  color: #fff;
+  font-size: 1em;
+  font-weight: bold;
+
+}
+
+input:focus {
+  border-bottom: 1px solid moccasin;
+}
+
+.inputWrap {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}

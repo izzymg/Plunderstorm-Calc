@@ -1,0 +1,27 @@
+.textarea {
+    animation: 300ms ease-in slide-up;
+
+    background-color: hsl(0, 0%, 10%);
+    width: 350px;
+    height: 200px;
+    border: 1px solid white;
+    color: #fff;
+    padding: 0.75em;
+
+    font-family: inherit;
+    outline: 0;
+}
+
+.textarea:focus {
+    outline: solid #7dce32;
+}
+
+@keyframes slide-up {
+    0% {
+        transform: translateY(90vw);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
