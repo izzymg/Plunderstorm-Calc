@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PlunderInput from '../PlunderInput/PlunderInput';
-import { MAX_RENOWN, RENOWN_PLUNDER } from "../util"
 import RenownInput from '../RenownInput/RenownInput';
 
+import { MAX_RENOWN, RENOWN_PLUNDER, FIRST_RENOWN, } from "../util"
 import styles from "./CalculatorView.module.css"
 
 function Results({ needed, neededPerDay }) {
@@ -28,16 +28,29 @@ export default function CalculatorView() {
   const getInitialDeadline = () =>
     Math.round(Math.abs((new Date(Date.now()) - new Date(2024, 4, 1)) / (24 * 60 * 60 * 1000)));
 
+  const calculateRenown = p =>
+    Math.min(1 + ((p - FIRST_RENOWN) / RENOWN_PLUNDER) + (Math.min(1, p / FIRST_RENOWN)), 40)
+
+  const calculatePlunder = r =>
+    r > 2 ? (((r-2) * RENOWN_PLUNDER) + FIRST_RENOWN) : FIRST_RENOWN + (RENOWN_PLUNDER * r-1)
+
   let [plunder, setPlunder] = useState(getInitialPlunder)
+  let [renown, setRenown] = useState(() => calculateRenown(plunder))
   let [deadline, setDeadline] = useState(getInitialDeadline)
 
-  const updatePlunder = (v, x) => {
-    localStorage.setItem("plunder", v * x)
-    setPlunder(v * x)
+  const updatePlunder = (v) => {
+    localStorage.setItem("plunder", v)
+    setPlunder(v)
+    setRenown(calculateRenown(v))
   }
 
-  const renown = () =>
-    Math.min(1 + (plunder/2500), 40)
+  const updateRenown = (v) => {
+    setRenown(v)
+    const plunder = calculatePlunder(v)
+    setPlunder(plunder)
+    localStorage.setItem("plunder", plunder)
+  }
+
 
   const needed = () =>
     (RENOWN_PLUNDER*MAX_RENOWN)-plunder
@@ -56,8 +69,8 @@ export default function CalculatorView() {
         <span>days o' plunderin left</span>
       </div>
     
-      <RenownInput initialRenown={renown()} onUpdate={v => updatePlunder(v-1, RENOWN_PLUNDER)}/>
-      <PlunderInput initialPlunder={plunder} onUpdate={v => updatePlunder(v, 1)}/>
+      <RenownInput initialRenown={renown} onUpdate={updateRenown}/>
+      <PlunderInput initialPlunder={plunder} onUpdate={updatePlunder}/>
 
 
       <div className="resultsWrap">
