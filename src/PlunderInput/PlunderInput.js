@@ -7,7 +7,7 @@ export default function PlunderInput({ initialPlunder, onUpdate }) {
     return(
         <div className="inputWrap">
             <label htmlFor='plunder'>YE PLUNDER</label>
-            <input id='plunder' type='text' value={initialPlunder} onChange={onPlunderChange} placeholder='0'></input>
+            <input id='plunder' type='text' pattern="[0-9]*" inputmode="numeric" value={initialPlunder} onChange={onPlunderChange} placeholder='0'></input>
         </div>
     )
 }
