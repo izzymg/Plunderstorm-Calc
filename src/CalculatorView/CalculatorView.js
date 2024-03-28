@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PlunderInput from '../PlunderInput/PlunderInput';
 import RenownInput from '../RenownInput/RenownInput';
 
-import { MAX_RENOWN, RENOWN_PLUNDER, FIRST_RENOWN, } from "../util"
+import { RENOWN_PLUNDER, FIRST_RENOWN, } from "../util"
 import styles from "./CalculatorView.module.css"
 
 function Results({ needed, neededPerDay }) {
